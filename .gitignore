@@ -10,3 +10,5 @@
 !MainWindow.xaml.cs
 !defaults.json
 !app.ico
+!screenshots/
+!screenshots/*.png

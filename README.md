@@ -8,6 +8,21 @@ M&K2PadEMU turns your mouse and keyboard into a virtual DualShock 4 controller, 
 
 The game stays on the console's own HDMI output. Only your *inputs* travel to the PS5, over Remote Play, so you don't watch a compressed stream.
 
+## Screenshots
+
+<table>
+  <tr>
+    <td valign="top" width="50%">
+      <img src="screenshots/profiles-and-keys.png" alt="M&K2PadEMU: profile bar, mouse settings, movement style and key bindings">
+    </td>
+    <td valign="top" width="50%">
+      <img src="screenshots/buttons-and-dpad.png" alt="M&K2PadEMU: face buttons, sticks and menu, and D-pad bindings">
+    </td>
+  </tr>
+</table>
+
+*Left: the profile bar, mouse settings, movement style and the first key bindings. Right: the rest of the same page, with the face buttons, sticks and menu, and D-pad.*
+
 ## Download
 
 Get **`MK2PadEMU-v1.0.0-win-x64.zip`** from the [Releases page](https://github.com/maranalex/MK2PadEMU/releases/latest). It is a single self-contained exe, so you **do not need to install .NET**. Unzip it, then follow [Requirements](#requirements) and [Usage](#usage) below.
