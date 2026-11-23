@@ -8,6 +8,10 @@ M&K2PadEMU turns your mouse and keyboard into a virtual DualShock 4 controller, 
 
 The game stays on the console's own HDMI output. Only your *inputs* travel to the PS5, over Remote Play, so you don't watch a compressed stream.
 
+## Download
+
+Get **`MK2PadEMU-v1.0.0-win-x64.zip`** from the [Releases page](https://github.com/maranalex/MK2PadEMU/releases/latest). It is a single self-contained exe, so you **do not need to install .NET**. Unzip it, then follow [Requirements](#requirements) and [Usage](#usage) below.
+
 ## How it works
 
 The app creates a virtual controller on your PC (through the ViGEmBus driver). [chiaki-ng](https://github.com/streetpea/chiaki-ng), a Remote Play client, reads that controller and sends its input to the console.
@@ -91,6 +95,6 @@ dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=
 
 ## Support the project
 
-If M&K2PadEMU is useful to you, a coffee is very appreciated. The download and updates are on Patreon:
+If M&K2PadEMU is useful to you, a coffee is very appreciated. Updates and news are also posted on Patreon:
 
 **[patreon.com/SS3MRN: M&K2PadEMU](https://www.patreon.com/SS3MRN/posts/m-k2pademu-176146837)**
