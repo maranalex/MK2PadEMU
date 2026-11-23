@@ -1,0 +1,12 @@
+﻿# Whitelist: this repo holds only what is needed to build the app, plus its icon and README.
+# Everything else (build output, screenshots, release builds, personal settings) is ignored.
+# To add a new source file, list it below with a leading "!".
+*
+!.gitignore
+!README.md
+!MK2PadEMU.csproj
+!Program.cs
+!MainWindow.xaml
+!MainWindow.xaml.cs
+!defaults.json
+!app.ico

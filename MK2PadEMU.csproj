@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms> <!-- only for the Keys enum -->
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <AssemblyName>MK2PadEMU</AssemblyName>   <!-- '&' is not safe in build names; the shipped file is renamed to M&K2PadEMU.exe -->
+    <Product>M&amp;K2PadEMU</Product>
+    <Version>1.0.0</Version>
+    <ApplicationIcon>app.ico</ApplicationIcon>   <!-- exe icon (Explorer, taskbar pin, shortcuts) -->
+  </PropertyGroup>
+  <ItemGroup>
+    <Resource Include="app.ico" />   <!-- window + taskbar icon while running -->
+    <EmbeddedResource Include="defaults.json" LogicalName="defaults.json" /> <!-- the built-in profiles; also the "original" for Revert -->
+    <PackageReference Include="Nefarius.ViGEm.Client" Version="1.21.256" />
+  </ItemGroup>
+</Project>

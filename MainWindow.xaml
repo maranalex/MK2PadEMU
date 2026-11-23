@@ -1,0 +1,228 @@
+<Window x:Class="MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="M&amp;K2PadEMU" Icon="app.ico" Width="800" Height="900" MinWidth="700" MinHeight="600"
+        WindowStartupLocation="CenterScreen" Background="Transparent"
+        FontFamily="Segoe UI" FontWeight="SemiBold" SnapsToDevicePixels="True" UseLayoutRounding="True">
+  <Window.Resources>
+    <!-- GTA VI palette: night violet, hot pink, sunset orange, lagoon teal -->
+    <SolidColorBrush x:Key="Muted" Color="#B8FFFFFF"/>
+    <LinearGradientBrush x:Key="Accent" StartPoint="0,0" EndPoint="1,1">
+      <GradientStop Color="#FF3D8B" Offset="0"/><GradientStop Color="#FF8A3D" Offset="1"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="GlassBg" StartPoint="0,0" EndPoint="1,1">
+      <GradientStop Color="#B3170A3A" Offset="0"/><GradientStop Color="#B3A3156B" Offset="0.6"/><GradientStop Color="#B3FF6A3D" Offset="1"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="SolidBg" StartPoint="0,0" EndPoint="1,1">
+      <GradientStop Color="#FF170A3A" Offset="0"/><GradientStop Color="#FF7A1260" Offset="0.65"/><GradientStop Color="#FFD9552F" Offset="1"/>
+    </LinearGradientBrush>
+
+    <Style TargetType="TextBlock"><Setter Property="Foreground" Value="White"/></Style>
+    <Style x:Key="Label" TargetType="TextBlock"><Setter Property="Foreground" Value="White"/><Setter Property="FontSize" Value="14"/><Setter Property="VerticalAlignment" Value="Center"/></Style>
+
+    <Style x:Key="Glass" TargetType="Border">
+      <Setter Property="Background" Value="#26FFFFFF"/>
+      <Setter Property="BorderBrush" Value="#4DFFFFFF"/>
+      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="CornerRadius" Value="18"/>
+      <Setter Property="Padding" Value="16"/>
+      <Setter Property="Effect"><Setter.Value><DropShadowEffect BlurRadius="24" ShadowDepth="4" Opacity="0.30" Color="#000000"/></Setter.Value></Setter>
+    </Style>
+
+    <!-- one control height everywhere (34) so rows line up -->
+    <Style x:Key="Pill" TargetType="Button">
+      <Setter Property="Foreground" Value="White"/><Setter Property="Padding" Value="14,0"/><Setter Property="Height" Value="34"/>
+      <Setter Property="Cursor" Value="Hand"/><Setter Property="FontSize" Value="13"/><Setter Property="VerticalAlignment" Value="Center"/>
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button">
+        <Border x:Name="b" Background="#26FFFFFF" BorderBrush="#4DFFFFFF" BorderThickness="1" CornerRadius="11" Padding="{TemplateBinding Padding}">
+          <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
+        <ControlTemplate.Triggers>
+          <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="b" Property="Background" Value="#42FFFFFF"/></Trigger>
+          <Trigger Property="IsPressed" Value="True"><Setter TargetName="b" Property="Background" Value="#5CFFFFFF"/></Trigger>
+        </ControlTemplate.Triggers>
+      </ControlTemplate></Setter.Value></Setter>
+    </Style>
+
+    <Style x:Key="AccentBtn" TargetType="Button" BasedOn="{StaticResource Pill}">
+      <Setter Property="FontWeight" Value="SemiBold"/>
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button">
+        <Border x:Name="b" Background="{StaticResource Accent}" CornerRadius="11" Padding="{TemplateBinding Padding}">
+          <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
+        <ControlTemplate.Triggers>
+          <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="b" Property="Opacity" Value="0.88"/></Trigger>
+          <Trigger Property="IsPressed" Value="True"><Setter TargetName="b" Property="Opacity" Value="0.7"/></Trigger>
+        </ControlTemplate.Triggers>
+      </ControlTemplate></Setter.Value></Setter>
+    </Style>
+
+    <!-- square icon-only button -->
+    <Style x:Key="IconBtn" TargetType="Button" BasedOn="{StaticResource Pill}">
+      <Setter Property="Width" Value="34"/><Setter Property="Padding" Value="0"/>
+    </Style>
+
+    <Style x:Key="TabBtn" TargetType="RadioButton">
+      <Setter Property="Foreground" Value="White"/><Setter Property="FontSize" Value="14"/><Setter Property="FontWeight" Value="Bold"/><Setter Property="Cursor" Value="Hand"/><Setter Property="Height" Value="34"/><Setter Property="VerticalAlignment" Value="Center"/>
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="RadioButton">
+        <Border x:Name="b" Background="Transparent" CornerRadius="13" Padding="22,0">
+          <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
+        <ControlTemplate.Triggers>
+          <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="b" Property="Background" Value="#26FFFFFF"/></Trigger>
+          <Trigger Property="IsChecked" Value="True"><Setter TargetName="b" Property="Background" Value="{StaticResource Accent}"/></Trigger>
+        </ControlTemplate.Triggers>
+      </ControlTemplate></Setter.Value></Setter>
+    </Style>
+
+    <Style x:Key="SliderFill" TargetType="RepeatButton"><Setter Property="Template"><Setter.Value><ControlTemplate TargetType="RepeatButton">
+      <Border Height="6" CornerRadius="3" Background="{StaticResource Accent}" Margin="0,0,-3,0"/>
+    </ControlTemplate></Setter.Value></Setter></Style>
+    <Style x:Key="SliderEmpty" TargetType="RepeatButton"><Setter Property="Template"><Setter.Value><ControlTemplate TargetType="RepeatButton">
+      <Border Height="6" Background="Transparent"/>
+    </ControlTemplate></Setter.Value></Setter></Style>
+    <Style x:Key="SliderThumb" TargetType="Thumb"><Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Thumb">
+      <Ellipse Width="18" Height="18" Fill="White" Stroke="#FF3D8B" StrokeThickness="3"/>
+    </ControlTemplate></Setter.Value></Setter></Style>
+    <Style x:Key="GlassSlider" TargetType="Slider"><Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Slider">
+      <Grid Height="24">
+        <Border Height="6" CornerRadius="3" Background="#33FFFFFF" VerticalAlignment="Center"/>
+        <Track x:Name="PART_Track">
+          <Track.DecreaseRepeatButton><RepeatButton Command="Slider.DecreaseLarge" Style="{StaticResource SliderFill}"/></Track.DecreaseRepeatButton>
+          <Track.IncreaseRepeatButton><RepeatButton Command="Slider.IncreaseLarge" Style="{StaticResource SliderEmpty}"/></Track.IncreaseRepeatButton>
+          <Track.Thumb><Thumb Style="{StaticResource SliderThumb}"/></Track.Thumb>
+        </Track>
+      </Grid>
+    </ControlTemplate></Setter.Value></Setter></Style>
+
+    <Style x:Key="ValueBox" TargetType="TextBox">
+      <Setter Property="Foreground" Value="White"/><Setter Property="FontSize" Value="14"/><Setter Property="CaretBrush" Value="White"/>
+      <Setter Property="TextAlignment" Value="Center"/><Setter Property="VerticalContentAlignment" Value="Center"/><Setter Property="Height" Value="34"/>
+      <Setter Property="SelectionBrush" Value="#FF3D8B"/><Setter Property="ToolTip" Value="Click and type a value, then press Enter"/>
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="TextBox">
+        <Border x:Name="b" Background="#1FFFFFFF" BorderBrush="#4DFFFFFF" BorderThickness="1" CornerRadius="9">
+          <ScrollViewer x:Name="PART_ContentHost" Margin="4,0"/>
+        </Border>
+        <ControlTemplate.Triggers>
+          <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="b" Property="Background" Value="#33FFFFFF"/></Trigger>
+          <Trigger Property="IsKeyboardFocused" Value="True"><Setter TargetName="b" Property="BorderBrush" Value="#FF3D8B"/><Setter TargetName="b" Property="Background" Value="#40FFFFFF"/></Trigger>
+        </ControlTemplate.Triggers>
+      </ControlTemplate></Setter.Value></Setter>
+    </Style>
+
+    <Style x:Key="ScrollEmpty" TargetType="RepeatButton"><Setter Property="Template"><Setter.Value><ControlTemplate TargetType="RepeatButton"><Border Background="Transparent"/></ControlTemplate></Setter.Value></Setter></Style>
+    <Style TargetType="ScrollBar">
+      <Setter Property="Width" Value="9"/><Setter Property="Background" Value="Transparent"/>
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="ScrollBar">
+        <Grid Background="Transparent">
+          <Track x:Name="PART_Track" IsDirectionReversed="True">
+            <Track.DecreaseRepeatButton><RepeatButton Command="ScrollBar.PageUpCommand" Style="{StaticResource ScrollEmpty}"/></Track.DecreaseRepeatButton>
+            <Track.Thumb><Thumb><Thumb.Template><ControlTemplate TargetType="Thumb"><Border CornerRadius="4" Background="#66FFFFFF" Margin="1,0"/></ControlTemplate></Thumb.Template></Thumb></Track.Thumb>
+            <Track.IncreaseRepeatButton><RepeatButton Command="ScrollBar.PageDownCommand" Style="{StaticResource ScrollEmpty}"/></Track.IncreaseRepeatButton>
+          </Track>
+        </Grid>
+      </ControlTemplate></Setter.Value></Setter>
+    </Style>
+  </Window.Resources>
+
+  <Grid x:Name="Root" Background="{StaticResource SolidBg}">
+    <!-- sunset glows behind the glass -->
+    <Ellipse Width="520" Height="520" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-190,-170,0" IsHitTestVisible="False">
+      <Ellipse.Fill><RadialGradientBrush><GradientStop Color="#99FF3D8B" Offset="0"/><GradientStop Color="#00FF3D8B" Offset="1"/></RadialGradientBrush></Ellipse.Fill>
+    </Ellipse>
+    <Ellipse Width="460" Height="460" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="-170,0,0,-170" IsHitTestVisible="False">
+      <Ellipse.Fill><RadialGradientBrush><GradientStop Color="#802EE6D6" Offset="0"/><GradientStop Color="#002EE6D6" Offset="1"/></RadialGradientBrush></Ellipse.Fill>
+    </Ellipse>
+
+    <Grid Margin="24,12,24,22">
+      <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+
+      <!-- header -->
+      <DockPanel Grid.Row="0" Margin="0,0,0,14">
+        <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" VerticalAlignment="Center">
+          <Border Style="{StaticResource Glass}" CornerRadius="14" Padding="12,6" Margin="0,0,10,0" Effect="{x:Null}">
+            <StackPanel Orientation="Horizontal">
+              <Ellipse x:Name="Dot" Width="9" Height="9" Fill="#99FFFFFF" Margin="0,0,8,0" VerticalAlignment="Center"/>
+              <TextBlock x:Name="StatusText" Text="capture off" FontWeight="SemiBold" VerticalAlignment="Center"/>
+            </StackPanel>
+          </Border>
+          <Button x:Name="ToggleBtn" Content="Toggle  (F8)" Style="{StaticResource AccentBtn}" Padding="16,8"/>
+        </StackPanel>
+        <StackPanel>
+          <TextBlock Text="M&amp;K2PadEMU" FontSize="32" FontWeight="Black" FontStyle="Italic">
+            <TextBlock.Foreground>
+              <LinearGradientBrush StartPoint="0,0" EndPoint="1,0"><GradientStop Color="#FF5FA8" Offset="0"/><GradientStop Color="#FFB347" Offset="1"/></LinearGradientBrush>
+            </TextBlock.Foreground>
+          </TextBlock>
+          <TextBlock Text="mouse + keyboard  →  DualShock 4     F8 capture · F9 quit" Foreground="{StaticResource Muted}" FontSize="12"/>
+        </StackPanel>
+      </DockPanel>
+
+      <!-- mouse settings -->
+      <!-- everything below the header scrolls as one page -->
+      <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+      <StackPanel Margin="0,0,8,0">
+      <Border Style="{StaticResource Glass}" Margin="0,0,0,14" Padding="14,10,14,6">
+        <StackPanel>
+          <TextBlock Text="PROFILES" FontSize="12" FontWeight="Bold" Foreground="{StaticResource Muted}" Margin="0,0,0,6"/>
+          <StackPanel x:Name="ProfileBar"/>
+        </StackPanel>
+      </Border>
+
+      <Border x:Name="MouseCard" Grid.Row="2" Style="{StaticResource Glass}" Margin="0,0,0,14">
+        <StackPanel>
+          <TextBlock Text="MOUSE" FontSize="12" FontWeight="Bold" Foreground="{StaticResource Muted}" Margin="0,0,0,6"/>
+          <Grid Margin="0,3"><Grid.ColumnDefinitions><ColumnDefinition Width="150"/><ColumnDefinition Width="*"/><ColumnDefinition Width="64"/></Grid.ColumnDefinitions>
+            <TextBlock Text="Sensitivity X" Style="{StaticResource Label}"/>
+            <Slider x:Name="SX" Grid.Column="1" Minimum="0.005" Maximum="0.2" SmallChange="0.001" LargeChange="0.005" Style="{StaticResource GlassSlider}"/>
+            <TextBox x:Name="SXv" Grid.Column="2" Style="{StaticResource ValueBox}"/></Grid>
+          <Grid Margin="0,3"><Grid.ColumnDefinitions><ColumnDefinition Width="150"/><ColumnDefinition Width="*"/><ColumnDefinition Width="64"/></Grid.ColumnDefinitions>
+            <TextBlock Text="Sensitivity Y" Style="{StaticResource Label}"/>
+            <Slider x:Name="SY" Grid.Column="1" Minimum="0.005" Maximum="0.2" SmallChange="0.001" LargeChange="0.005" Style="{StaticResource GlassSlider}"/>
+            <TextBox x:Name="SYv" Grid.Column="2" Style="{StaticResource ValueBox}"/></Grid>
+          <Grid Margin="0,3"><Grid.ColumnDefinitions><ColumnDefinition Width="150"/><ColumnDefinition Width="*"/><ColumnDefinition Width="64"/></Grid.ColumnDefinitions>
+            <TextBlock Text="Deadzone offset" Style="{StaticResource Label}"/>
+            <Slider x:Name="DZ" Grid.Column="1" Minimum="0" Maximum="0.5" SmallChange="0.005" LargeChange="0.02" Style="{StaticResource GlassSlider}"/>
+            <TextBox x:Name="DZv" Grid.Column="2" Style="{StaticResource ValueBox}"/></Grid>
+          <Grid Margin="0,3"><Grid.ColumnDefinitions><ColumnDefinition Width="150"/><ColumnDefinition Width="*"/><ColumnDefinition Width="64"/></Grid.ColumnDefinitions>
+            <TextBlock Text="Aim smoothing (ms)" Style="{StaticResource Label}" ToolTip="Spreads mouse movement over a few ms to remove nudgy, zigzag aim. 0 = off."/>
+            <Slider x:Name="SM" Grid.Column="1" Minimum="0" Maximum="60" SmallChange="1" LargeChange="5" Style="{StaticResource GlassSlider}"/>
+            <TextBox x:Name="SMv" Grid.Column="2" Style="{StaticResource ValueBox}"/></Grid>
+          <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+            <Button x:Name="InvertBtn" Style="{StaticResource Pill}"/>
+            <Button x:Name="SwapBtn" Style="{StaticResource Pill}" Margin="10,0,0,0"/>
+          </StackPanel>
+        </StackPanel>
+      </Border>
+
+      <!-- tabs -->
+      <Border x:Name="TabsCard" Grid.Row="3" Style="{StaticResource Glass}" CornerRadius="16" Padding="4" HorizontalAlignment="Left" Margin="0,0,0,12" Effect="{x:Null}">
+        <StackPanel Orientation="Horizontal">
+          <RadioButton x:Name="TabSimple" Content="Simple Keys" GroupName="tabs" IsChecked="True" Style="{StaticResource TabBtn}"/>
+          <RadioButton x:Name="TabMacro" Content="Macros" GroupName="tabs" Style="{StaticResource TabBtn}"/>
+        </StackPanel>
+      </Border>
+
+      <!-- content -->
+      <StackPanel x:Name="ContentPanel">
+        <StackPanel x:Name="SimpleView">
+          <StackPanel x:Name="SimplePanel"/>
+        </StackPanel>
+        <StackPanel x:Name="MacroView" Visibility="Collapsed">
+          <DockPanel Margin="0,0,6,10">
+            <Button x:Name="NewMacro" DockPanel.Dock="Right" Style="{StaticResource AccentBtn}">
+              <StackPanel Orientation="Horizontal">
+                <Viewbox Width="12" Height="12" Margin="0,0,8,0" VerticalAlignment="Center"><Canvas Width="12" Height="12"><Path Data="M6,1 L6,11 M1,6 L11,6" Stroke="White" StrokeThickness="1.8" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/></Canvas></Viewbox>
+                <TextBlock Text="New macro" VerticalAlignment="Center"/>
+              </StackPanel>
+            </Button>
+            <TextBlock Text="One keyboard key (or combo) presses several PS buttons at once." Foreground="{StaticResource Muted}" VerticalAlignment="Center" TextWrapping="Wrap"/>
+          </DockPanel>
+          <StackPanel x:Name="MacroPanel"/>
+        </StackPanel>
+      </StackPanel>
+      </StackPanel>
+      </ScrollViewer>
+    </Grid>
+  </Grid>
+</Window>

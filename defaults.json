@@ -1,0 +1,374 @@
+﻿{
+    "Active":  0,
+    "ActiveSet":  -1,
+    "Profiles":  [
+                     {
+                         "Id":  "c144365c9fc74ca0b71b9df954e29830",
+                         "Name":  "GTA6-Foot",
+                         "SensX":  0.045384532632082364,
+                         "SensY":  0.045,
+                         "Dead":  0.15,
+                         "SmoothMs":  10,
+                         "InvertY":  false,
+                         "SwapSticks":  true,
+                         "MoveMode":  "Tiers",
+                         "NormalPct":  100,
+                         "SlowPct":  39.70786516853942,
+                         "SprintButton":  "R3",
+                         "RampMs":  150,
+                         "Binds":  {
+                                       "Up":  [
+                                                  "W"
+                                              ],
+                                       "Down":  [
+                                                    "S"
+                                                ],
+                                       "Left":  [
+                                                    "A"
+                                                ],
+                                       "Right":  [
+                                                     "D"
+                                                 ],
+                                       "R2":  [
+                                                  "RButton"
+                                              ],
+                                       "L2":  [
+                                                  "LButton"
+                                              ],
+                                       "L1":  [
+                                                  "Q"
+                                              ],
+                                       "R1":  [
+                                                  "E"
+                                              ],
+                                       "Cross":  [
+                                                     "Space"
+                                                 ],
+                                       "Circle":  [
+                                                      "C"
+                                                  ],
+                                       "Square":  [
+                                                      "V"
+                                                  ],
+                                       "Triangle":  [
+                                                        "F"
+                                                    ],
+                                       "L3":  [
+                                                  "MButton"
+                                              ],
+                                       "R3":  [
+                                                  "ShiftKey"
+                                              ],
+                                       "Options":  [
+                                                       "Escape"
+                                                   ],
+                                       "DUp":  [
+                                                   "Up"
+                                               ],
+                                       "DDown":  [
+                                                     "Down"
+                                                 ],
+                                       "DLeft":  [
+                                                     "Left"
+                                                 ],
+                                       "DRight":  [
+                                                      "Right"
+                                                  ],
+                                       "Create":  [
+
+                                                  ],
+                                       "Walk":  [
+                                                    "LButton"
+                                                ],
+                                       "Slow":  [
+                                                    "Menu"
+                                                ],
+                                       "Sprint":  [
+                                                      "ShiftKey"
+                                                  ]
+                                   },
+                         "Extra":  {
+                                       "Up":  [
+
+                                              ],
+                                       "Down":  [
+
+                                                ],
+                                       "Left":  [
+
+                                                ],
+                                       "Right":  [
+
+                                                 ],
+                                       "Slow":  [
+
+                                                ],
+                                       "Sprint":  [
+
+                                                  ],
+                                       "R2":  [
+
+                                              ],
+                                       "L2":  [
+
+                                              ],
+                                       "R1":  [
+                                                  [
+                                                      "Tab"
+                                                  ]
+                                              ],
+                                       "L1":  [
+
+                                              ],
+                                       "Cross":  [
+                                                     [
+                                                         "Enter"
+                                                     ]
+                                                 ],
+                                       "Circle":  [
+                                                      [
+                                                          "ControlKey"
+                                                      ]
+                                                  ],
+                                       "Square":  [
+
+                                                  ],
+                                       "Triangle":  [
+
+                                                    ],
+                                       "L3":  [
+
+                                              ],
+                                       "R3":  [
+
+                                              ],
+                                       "Options":  [
+
+                                                   ],
+                                       "Create":  [
+
+                                                  ],
+                                       "DUp":  [
+
+                                               ],
+                                       "DDown":  [
+
+                                                 ],
+                                       "DLeft":  [
+
+                                                 ],
+                                       "DRight":  [
+
+                                                  ]
+                                   },
+                         "Macros":  [
+                                        {
+                                            "Buttons":  [
+                                                            "L3",
+                                                            "R3"
+                                                        ],
+                                            "Chord":  [
+                                                          "XButton2"
+                                                      ]
+                                        }
+                                    ]
+                     },
+                     {
+                         "Id":  "3deafecd52684d769e00bab517ca0cfe",
+                         "Name":  "GTA6-Vehicle",
+                         "SensX":  0.04538453263208238,
+                         "SensY":  0.045,
+                         "Dead":  0.15,
+                         "SmoothMs":  10,
+                         "InvertY":  false,
+                         "SwapSticks":  true,
+                         "MoveMode":  "Tiers",
+                         "NormalPct":  100,
+                         "SlowPct":  39.70786516853942,
+                         "SprintButton":  "R3",
+                         "RampMs":  150,
+                         "Binds":  {
+                                       "Up":  [
+
+                                              ],
+                                       "Down":  [
+
+                                                ],
+                                       "Left":  [
+                                                    "A"
+                                                ],
+                                       "Right":  [
+                                                     "D"
+                                                 ],
+                                       "R2":  [
+                                                  "S"
+                                              ],
+                                       "L2":  [
+                                                  "W"
+                                              ],
+                                       "L1":  [
+                                                  "LButton"
+                                              ],
+                                       "R1":  [
+                                                  "RButton"
+                                              ],
+                                       "Cross":  [
+                                                     "Space"
+                                                 ],
+                                       "Circle":  [
+                                                      "C"
+                                                  ],
+                                       "Square":  [
+                                                      "Q"
+                                                  ],
+                                       "Triangle":  [
+                                                        "F"
+                                                    ],
+                                       "L3":  [
+                                                  "MButton"
+                                              ],
+                                       "R3":  [
+                                                  "ShiftKey"
+                                              ],
+                                       "Options":  [
+                                                       "Escape"
+                                                   ],
+                                       "DUp":  [
+                                                   "Up"
+                                               ],
+                                       "DDown":  [
+                                                     "Down"
+                                                 ],
+                                       "DLeft":  [
+                                                     "Left"
+                                                 ],
+                                       "DRight":  [
+                                                      "Right"
+                                                  ],
+                                       "Create":  [
+
+                                                  ],
+                                       "Walk":  [
+                                                    "LButton"
+                                                ],
+                                       "Slow":  [
+                                                    "Menu"
+                                                ],
+                                       "Sprint":  [
+                                                      "ShiftKey"
+                                                  ]
+                                   },
+                         "Extra":  {
+                                       "Up":  [
+
+                                              ],
+                                       "Down":  [
+
+                                                ],
+                                       "Left":  [
+
+                                                ],
+                                       "Right":  [
+
+                                                 ],
+                                       "Slow":  [
+
+                                                ],
+                                       "Sprint":  [
+
+                                                  ],
+                                       "R2":  [
+
+                                              ],
+                                       "L2":  [
+
+                                              ],
+                                       "R1":  [
+
+                                              ],
+                                       "L1":  [
+
+                                              ],
+                                       "Cross":  [
+                                                     [
+                                                         "Enter"
+                                                     ]
+                                                 ],
+                                       "Circle":  [
+                                                      [
+                                                          "E"
+                                                      ]
+                                                  ],
+                                       "Square":  [
+
+                                                  ],
+                                       "Triangle":  [
+
+                                                    ],
+                                       "L3":  [
+
+                                              ],
+                                       "R3":  [
+
+                                              ],
+                                       "Options":  [
+
+                                                   ],
+                                       "Create":  [
+
+                                                  ],
+                                       "DUp":  [
+
+                                               ],
+                                       "DDown":  [
+
+                                                 ],
+                                       "DLeft":  [
+
+                                                 ],
+                                       "DRight":  [
+
+                                                  ]
+                                   },
+                         "Macros":  [
+                                        {
+                                            "Buttons":  [
+                                                            "L3",
+                                                            "R3"
+                                                        ],
+                                            "Chord":  [
+
+                                                      ]
+                                        },
+                                        {
+                                            "Buttons":  [
+                                                            "L3"
+                                                        ],
+                                            "Chord":  [
+
+                                                      ]
+                                        }
+                                    ]
+                     }
+                 ],
+    "Sets":  [
+                 {
+                     "Name":  "GTA-switcher",
+                     "Entries":  [
+                                     {
+                                         "Profile":  "c144365c9fc74ca0b71b9df954e29830",
+                                         "Hotkey":  [
+                                                        "F1"
+                                                    ]
+                                     },
+                                     {
+                                         "Profile":  "3deafecd52684d769e00bab517ca0cfe",
+                                         "Hotkey":  [
+                                                        "F2"
+                                                    ]
+                                     }
+                                 ],
+                     "Id":  "493a7dee7fd64dd3aaa5a6574f990901"
+                 }
+             ]
+}
